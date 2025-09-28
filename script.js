@@ -9,7 +9,11 @@ let selected = [];
 const imgClasses = ['img1', 'img2', 'img3', 'img4', 'img5'];
 
 function shuffle(array) {
-  return array.sort(() => Math.random() - 0.5);
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; 
+  }
+  return array;
 }
 
 function init() {
