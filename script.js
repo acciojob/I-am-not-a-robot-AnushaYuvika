@@ -6,15 +6,12 @@ const message = document.getElementById('message');
 
 let selected = [];
 
-// Image classes
 const imgClasses = ['img1', 'img2', 'img3', 'img4', 'img5'];
 
-// Function to shuffle array
 function shuffle(array) {
   return array.sort(() => Math.random() - 0.5);
 }
 
-// Initialize images
 function init() {
   selected = [];
   message.textContent = '';
@@ -22,23 +19,23 @@ function init() {
   verifyBtn.style.display = 'none';
   imagesContainer.innerHTML = '';
 
-  // Random duplicate
+ 
   const duplicateIndex = Math.floor(Math.random() * imgClasses.length);
   const images = [...imgClasses];
-  images.push(imgClasses[duplicateIndex]); // add duplicate
+  images.push(imgClasses[duplicateIndex]); 
   const shuffled = shuffle(images);
 
-  // Create image elements
+ 
   shuffled.forEach((cls, idx) => {
     const img = document.createElement('img');
     img.className = cls;
-    img.dataset.id = cls; // store id to compare
+    img.dataset.id = cls; 
     img.addEventListener('click', handleClick);
     imagesContainer.appendChild(img);
   });
 }
 
-// Handle image click
+
 function handleClick(e) {
   const img = e.target;
 
@@ -50,14 +47,14 @@ function handleClick(e) {
     selected = selected.filter(i => i !== img);
   }
 
-  // Show Reset button
+ 
   resetBtn.style.display = selected.length > 0 ? 'inline-block' : 'none';
 
-  // Show Verify button only if two selected
+  
   verifyBtn.style.display = selected.length === 2 ? 'inline-block' : 'none';
 }
 
-// Reset functionality
+
 resetBtn.addEventListener('click', () => {
   selected.forEach(img => img.classList.remove('selected'));
   selected = [];
@@ -66,7 +63,7 @@ resetBtn.addEventListener('click', () => {
   message.textContent = '';
 });
 
-// Verify functionality
+
 verifyBtn.addEventListener('click', () => {
   if (selected.length === 2) {
     if (selected[0].dataset.id === selected[1].dataset.id) {
@@ -78,5 +75,5 @@ verifyBtn.addEventListener('click', () => {
   }
 });
 
-// Initialize on load
-init();
+
+
