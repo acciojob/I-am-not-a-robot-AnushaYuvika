@@ -76,4 +76,4 @@ verifyBtn.addEventListener('click', () => {
 });
 
 
-
+init();
